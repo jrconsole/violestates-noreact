@@ -1,0 +1,464 @@
+* {
+    font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ,Arial, sans-serif;
+    color: navy;
+    box-sizing:border-box;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+.mySlides img {
+    height: 300px;
+    object-fit: cover;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.prev {
+    left: 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+nav {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    height: 30px;
+    padding: 0px 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid white;
+    position: fixed;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    font-size: 16px;
+    color: navy;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#hamburger {
+    height: 50%;
+    width: auto;
+    position: absolute;
+    right: 10px;
+}
+
+.menu {
+    position: fixed;
+    top: 30px;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: none;
+    justify-content: center;
+}
+
+.menu a {
+    color:navy;
+    z-index: 2;
+    font-size: 20px;
+    display: block;
+    line-height: 3rem;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    background: rgba(0, 0, 0, 0.2)
+
+  }
+
+.menubox {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0px;
+    opacity: 0.9;
+    background-color:white;
+    z-index: 1;
+}
+
+ul {
+    width: auto;
+    min-width: 370px;
+    padding: 10px 0 0 0;
+    display: flex;
+    flex-flow: column;
+    margin: 0 auto;
+    position: absolute;
+    align-items: center;
+    list-style: none;
+    z-index: 2;
+}
+
+li {
+    width: 50%;
+    height: 3rem;
+    z-index: 2;
+    border-bottom: solid 1px navy;
+}
+
+.lastNav {
+    border-bottom: none;
+}
+
+.button {
+    padding: 0px;
+    text-align: center;
+    z-index: 1;
+    display: inline-block;
+}
+  
+.button a, #submitProp {
+    background-color: lightcoral;
+    border: 1px solid lightcoral;
+    border-radius: 3px;
+    color: seashell;
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 14px;
+    text-decoration: none;
+}
+  
+.button a:hover, #submitProp:hover {
+    background: seashell;
+    border: 1px solid lightcoral;
+    color: lightcoral;
+}
+
+header {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#myVideo {
+    opacity: 0.8;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    background-size: cover;
+    top: 0;
+    border-bottom: 1px solid white;
+}
+
+.mission {
+    width: 85%;
+    background-color:transparent;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    z-index: 1;
+}
+
+.mission h2, h4 {
+    margin: 10px;
+    opacity: 1.0;
+    color: navy;
+}
+
+h1, h2 {
+    text-transform: capitalize;
+}
+
+h4 {
+    word-spacing: 4px;
+}
+
+main {
+
+}
+
+.port {
+    width: 100%;
+    margin: 5% auto;
+    display: inline-flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+.property {
+    margin: 16px;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 1px 1px 8px -4px #000000;
+}
+
+.property img {
+    width: 100%;
+    height: 300px;
+    max-height: 1000px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.property span {
+    font-size: 16px;
+}
+.propInfo span{
+    padding: 0 12px;
+}
+
+.propTitle {
+    margin: 10px 0;
+    text-align: left;
+    line-height: 24px;
+}
+
+.propTitle h4 {
+    margin: 0;
+}
+
+.property .button {
+    position: relative;
+    bottom: 0;
+  }
+  
+.property .button a, #submitProp {
+    font-size: medium;
+    padding: 10px;
+}
+
+#submitProp{
+    margin: 20px;
+}
+
+#addPropMenu {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+form {
+    font-size: 16px;
+    width: 70%;
+    height: 60%;
+    overflow: scroll;
+    display: inline-flex;
+    flex-flow: column;
+    position: fixed;
+    align-items: center;
+    z-index: 2;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 1px 1px 8px -4px #000000;
+}
+
+.formbox {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0px;
+    opacity: 0.9;
+    background-color:white;
+    z-index: 1;
+}
+
+.artcontainer {
+    min-height: 500px;
+    width: 100%;
+    background-image: url('../images/meadow.jpg');
+    background-repeat: no-repeat;
+    background-position: 0 50px;
+    background-size: cover;
+    margin: auto;
+    padding: 10% 0;
+}
+
+.artcontent h2 {
+    margin: 0;
+    z-index: 1;
+}
+
+.artcontent {
+    width: 55%;
+    height: 85%;
+    margin: 5%;
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.artdetail {
+    position: relative;
+    margin-top: 40px;
+    padding: 0 10px;
+}
+
+.artbox {
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    top: 80px;
+    background-color: black;
+    opacity: 0.5;
+    line-height: 2em;
+    z-index: 0;
+}
+
+.artdetail h3, .artdetail p {
+    position: relative;
+    z-index: 1;
+}
+
+.artdetail p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.opaque {
+    opacity: 1;
+}
+
+footer {
+    margin-top: 0px;
+}
+
+.contact {
+    margin: auto;
+    line-height: 2em;
+}
+
+.copyright {
+    margin-left: 20px;
+    text-align: left;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    color: seashell;
+    background-color: white;
+    opacity: 0.9;
+    text-align: center;
+    margin: 0px;
+}
+
+@media only screen and (max-width: 900px) {
+    .mission h2 {
+        font-size: 30px;
+    }
+
+    .mission h4 {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 615px) {
+
+    .mission h2 {
+        font-size: 22px;
+    }
+
+    .mission h4 {
+        font-size: 14px;
+    }
+
+}
+

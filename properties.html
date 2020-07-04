@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="./resources/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js" integrity="sha256-usTqAE1ywvdMtksWzdeWzD75MsfJN0h0U7y2NtZL3N0=" crossorigin="anonymous"></script>
+    <script id="temp" type='text/x-handlebars-template'>
+        {{#each propertiesArray}}
+        <div class = property>
+            <img src="{{this._imageURL}}" alt={{this._name}}/>
+            <div class="propInfo">
+                <span>${{this._price}}/mo</span>
+                <span>{{this._numBed}}Bed/{{this._numBath}}Bath</span>
+            </div>
+            <div class="propTitle">
+                <h4>{{this._name}}</h4>
+                <span>{{this._address}} {{this._city}}</span>
+            </div>
+            <div class="button">
+                <a href="#">View Property</a>
+            </div>
+        </div>
+        {{/each}}
+    </script>
+ 
+</head>
+<body>
+    <nav>
+        <a class = logo id=logo href="./index.html">ViolEstates</a>
+        <img src="./resources/images/hamburger-navy.png" id="hamburger"/>
+    </nav>
+
+    <div id = "navMenu" class = "menu">
+        <ul >
+            <li><a id="nav1" href="./properties.html">Properties</a></li>
+            <li><a id="nav2" href="#artist">Apply</a></li>
+            <li class="lastNav"><a id="nav3" href="#request">Contact</a></li>
+        </ul>
+        <div id = "menuback" class="menubox"></div>
+    </div>
+
+    <main>
+        <div class = port id = portfolio>
+
+        </div>
+
+        <div class="button" id="addPropButton">
+            <a href="#">Add Property</a>
+        </div>
+        <div class='addProp' id='addPropMenu'>
+        <form id='addPropForm'>
+            <h2>Create a Property</h2>
+            <label for="price">Monthly Rent:</label>
+            <input type="text" id="price" name="price"><br>
+            <label for="numBed">Number of Bedrooms:</label>
+            <input type="text" id="numBed" name="numBed"><br>
+            <label for="numBath">Number of Bathrooms:</label>
+            <input type="text" id="numBath" name="numBath"><br>
+            <label for="propName">Property Name:</label>
+            <input type="text" id="propName" name="propName"><br>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address"><br>
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city">        
+            <input type="button" value="Add Property" class="button" id="submitProp">
+        </form>
+        <div class='formbox' id='formbox'></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class = contact id = request>
+            <h4>ViolEstates</h4>
+            <h5>contact@violestates.com</h5>
+            <h5>888-888-8888</h5>
+        </div>
+        <div class = copyright>
+            <h6>copyright ViolEstates 2020</h6>
+        </div>
+    </footer>
+
+    <script  src="./main.js" type="text/javascript"></script>
+</body>
+</html>
