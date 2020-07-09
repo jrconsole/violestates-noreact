@@ -24,49 +24,19 @@ nav1.onclick = closeMenu;
 nav2.onclick = closeMenu;
 nav3.onclick = closeMenu;
 
-//SHOWCASE SLIDES
-let slideIndex = 1;
-showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  const slides = document.getElementsByClassName("mySlides");
-  const dots = document.getElementsByClassName("dot");
-  if (slides.length && dots.length) {
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " active";
-  }
-}
-
 //PROPERTY CREATION
 //Define property class for creating objects that hold info needed in each element
 class Property {
-  constructor(imageURL, price, numBed, numBath, name, address, city) {
+  constructor(uniqueId, imageURL, price, numBed, numBath, name, address, city, imagesArray) {
+    this._uniqueId = uniqueId;
     this._imageURL = imageURL;
     this._price = price;
     this._numBed = numBed;
     this._numBath = numBath;
     this._name = name;
     this._address = address;
-    this.city = city;
+    this._city = city;
+    this._imagesArray = imagesArray;
   }
 
   get imageURL(){
@@ -128,21 +98,99 @@ class Property {
 
 //Hard code the first couple properties. Will delete once connected to database.
 const propertiesArray = [];
-const property1 = new Property("./resources/images/Property1.jpg", 700, 1, 1, 'Property 1a', '1 Awesomer Way', 'Dayton,OH');
+const imagesArray1 = ["./resources/images/Property1/Image1.jpg", "./resources/images/Property1/Image2.jpg", "./resources/images/Property1/Image3.jpg"]
+const imagesArray2 = ["./resources/images/Property2/Image1.jpg", "./resources/images/Property2/Image2.jpg", "./resources/images/Property2/Image3.jpg"]
+const imagesArray3 = ["./resources/images/Property3/Image1.jpg", "./resources/images/Property3/Image2.jpg", "./resources/images/Property3/Image3.jpg"]
+const imagesArray4 = ["./resources/images/Property4/Image1.jpg", "./resources/images/Property4/Image2.jpg", "./resources/images/Property4/Image3.jpg"]
+const imagesArray5 = ["./resources/images/Property5/Image1.jpg", "./resources/images/Property5/Image2.jpg", "./resources/images/Property5/Image3.jpg"]
+const imagesArray6 = ["./resources/images/Property6/Image1.jpg", "./resources/images/Property6/Image2.jpg", "./resources/images/Property6/Image3.jpg"]
+const imagesArray7 = ["./resources/images/Property7/Image1.jpg", "./resources/images/Property7/Image2.jpg", "./resources/images/Property7/Image3.jpg"]
+const imagesArray8 = ["./resources/images/Property8/Image1.jpg", "./resources/images/Property8/Image2.jpg", "./resources/images/Property8/Image3.jpg"]
+const imagesArray9 = ["./resources/images/Property9/Image1.jpg", "./resources/images/Property9/Image2.jpg", "./resources/images/Property9/Image3.jpg"]
+const imagesArray10 = ["./resources/images/Property10/Image1.jpg", "./resources/images/Property10/Image2.jpg", "./resources/images/Property10/Image3.jpg"]
+const allImages = [imagesArray1, imagesArray2, imagesArray3, imagesArray4, imagesArray5, imagesArray6, imagesArray7, imagesArray8, imagesArray9, imagesArray10]
+
+const property1 = new Property(1, imagesArray1[0], 700, 1, 1, 'Property 1a', '1 Awesomer Way', 'Dayton,OH', imagesArray1);
 propertiesArray.push(property1);
-const property2 = new Property("./resources/images/Property2.jpeg", 800, 2, 2, 'Property 2', '2 Awesomer Way', 'Dayton,OH');
+const property2 = new Property(2, imagesArray2[0], 800, 2, 2, 'Property 2', '2 Awesomer Way', 'Dayton,OH', imagesArray2);
 propertiesArray.push(property2);
 
-const source = document.getElementById('temp').innerHTML;
-
-const template = Handlebars.compile(source);
-
-const context = {
-  propertiesArray
+if(document.getElementById('homeSlides')) {
+  const coverProperties = propertiesArray.slice(0,3);
+  let images = [];
+  coverProperties.forEach(property => {
+    images.push(property._imageURL);
+  })
+  createHandlebars('slidesTemp', 'homeSlides', images)
 }
 
-const compiledHtml = template(context);
-document.getElementById("portfolio").innerHTML = compiledHtml;
+
+if(document.getElementById('portfolio')) {
+  createHandlebars('propTemp', 'portfolio', propertiesArray);
+}
+
+if(document.getElementById('uniqueId')) {
+
+  let uniqueId = Number(document.getElementById('uniqueId').innerHTML);
+  
+  const  checkId = (prop) => {
+    return uniqueId === prop._uniqueId;
+  }
+
+  let propId = propertiesArray.findIndex(checkId);
+  //let images = propertiesArray[propId]._imagesArray;
+  let images = allImages[uniqueId - 1];
+  createHandlebars('slidesTemp', 'propSlidesFill', images);
+}
+
+
+//SHOWCASE SLIDES
+//initialize slides after creating elements with Handlebars
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  const slides = document.getElementsByClassName("mySlides");
+  const dots = document.getElementsByClassName("dot");
+
+  if (slides.length && dots.length) {
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+  }
+}
+
+//define general Handlebars function
+function createHandlebars(tempId, fillId, fillContext) {
+  const source = document.getElementById(tempId).innerHTML;
+
+  const template = Handlebars.compile(source);
+
+  const context = {
+    fillContext
+  }
+
+  const compiledHtml = template(context);
+  document.getElementById(fillId).innerHTML = compiledHtml;
+}
 
 //get all form elements for adding a new property
 const addPropButton = document.getElementById('addPropButton');
@@ -169,34 +217,36 @@ let closeAddPropWindow = (event) => {
 }
 
 //open form to add property
-addPropButton.onclick = openAddPropWindow;
-//close form by clicking outside of box
-formbox.onclick = closeAddPropWindow;
-//renders new property based on form inputs, closes form, resets form values
-submitButton.addEventListener("click", function () { addProperty("./resources/images/Property3.jpg", priceInput.value, numBedInput.value, numBathInput.value, nameInput.value, addressInput.value, cityInput.value) } );
+if (addPropButton) {
+  addPropButton.onclick = openAddPropWindow;
 
+  //close form by clicking outside of box
+  formbox.onclick = closeAddPropWindow;
+
+  //Change to i=0 after deleting hard-coded properites
+  let addNum = 2;
+  //renders new property based on form inputs, closes form, resets form values
+  submitButton.addEventListener("click", function () { addProperty("./resources/images/Property3.jpg", priceInput.value, numBedInput.value, numBathInput.value, nameInput.value, addressInput.value, cityInput.value) } );
+}
 //function called by submitButton. Takes form inputs as arguments
 function addProperty(imageURL, price, numBed, numBath, name, address, city) {
+ console.log(addNum)
+  addNum++;
+  const newImagesArray = allImages[addNum-1];
+  const newImageURL = newImagesArray[0];
+
   //create new Property instance using form inputs, add it to array of properties
-  let newProperty = new Property(imageURL, price, numBed, numBath, name, address, city);
+  let newProperty = new Property(addNum, newImageURL, price, numBed, numBath, name, address, city, newImagesArray);
   propertiesArray.push(newProperty);
 
   //use Handlebars template to re-render entire list of properties
-  const source = document.getElementById('temp').innerHTML;
-
-  const template = Handlebars.compile(source);
-
-  const context = {
-    propertiesArray
-  }
-
-  const compiledHtml = template(context);
-  document.getElementById("portfolio").innerHTML = compiledHtml;
+  createHandlebars('propTemp', 'portfolio', propertiesArray);
   
 
   //reset and close form
   addPropForm.scrollTop = 0;
   closeAddPropWindow();
   addPropForm.reset();
+  console.log(addNum)
 }
 

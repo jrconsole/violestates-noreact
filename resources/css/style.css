@@ -4,11 +4,16 @@
     box-sizing:border-box;
 }
 
+#uniqueId {
+    display: none;
+}
+
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
+    max-width: 1000px;
+    height: 300px;
+    position: relative;
+    margin: auto;
 }
 
 /* Hide the images by default */
@@ -262,10 +267,6 @@ h4 {
     word-spacing: 4px;
 }
 
-main {
-
-}
-
 .port {
     width: 100%;
     margin: 5% auto;
@@ -282,6 +283,11 @@ main {
     border-radius: 10px;
     padding: 10px;
     box-shadow: 1px 1px 8px -4px #000000;
+}
+
+#propSlidesFill {
+    width: 100%;
+    height: auto;
 }
 
 .property img {
