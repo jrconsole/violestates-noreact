@@ -223,11 +223,12 @@ if (addPropButton) {
   //close form by clicking outside of box
   formbox.onclick = closeAddPropWindow;
 
-  //Change to i=0 after deleting hard-coded properites
-  let addNum = 2;
   //renders new property based on form inputs, closes form, resets form values
   submitButton.addEventListener("click", function () { addProperty("./resources/images/Property3.jpg", priceInput.value, numBedInput.value, numBathInput.value, nameInput.value, addressInput.value, cityInput.value) } );
 }
+  //Change to i=0 after deleting hard-coded properites
+  let addNum = 2;
+
 //function called by submitButton. Takes form inputs as arguments
 function addProperty(imageURL, price, numBed, numBath, name, address, city) {
  console.log(addNum)
