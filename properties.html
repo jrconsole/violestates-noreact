@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="./resources/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js" integrity="sha256-usTqAE1ywvdMtksWzdeWzD75MsfJN0h0U7y2NtZL3N0=" crossorigin="anonymous"></script>
-    <script id="temp" type='text/x-handlebars-template'>
-        {{#each propertiesArray}}
-        <div class = property>
+    <script id="propTemp" type='text/x-handlebars-template'>
+        {{#each fillContext}}
+        <div id="{{this._uniqueId}}" class = property>
             <img src="{{this._imageURL}}" alt={{this._name}}/>
             <div class="propInfo">
                 <span>${{this._price}}/mo</span>
@@ -20,7 +20,7 @@
                 <span>{{this._address}} {{this._city}}</span>
             </div>
             <div class="button">
-                <a href="#">View Property</a>
+                <a href="./property{{this._uniqueId}}.html">View Property</a>
             </div>
         </div>
         {{/each}}

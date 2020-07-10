@@ -180,6 +180,7 @@ function showSlides(n) {
 
 //define general Handlebars function
 function createHandlebars(tempId, fillId, fillContext) {
+
   const source = document.getElementById(tempId).innerHTML;
 
   const template = Handlebars.compile(source);
